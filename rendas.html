@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="estilo.css">
+    <title></title>
+  </head>
+  <body>
+    <input type="checkbox" id="chec">
+    <label for="chec">
+      <img id="men" src="menu.png" >
+    </label>
+    <nav>
+      <ul id="menu" name="menu">
+        <li><a href="carteira.html">Carteira</a></li>
+        <li><a href="rendas.html">Rendas</a></li>
+        <li><a href="despesas.html">Despesas</a></li>
+        <li><a href="contas.html">Contas</a></li>
+      </ul>
+    </nav>
+    <div   class="jubortron">
+      <h1 id="renda">RENDAS</h1>
+      <div id="home" class="container-fluid">
+        <form>
+          <label for="Erenda">Tipo Renda</label><br>
+          <input type="text" id="Erenda" name="Erenda" placeholder="Sálario, invetimento, outros"><br>
+          <label for="dataR">Data do recebimento</label><br>
+          <input type="date" id="dataR" name="dataR"><br>
+          <label for"Vrenda">Valor da Renda</label><br>
+          <input type="number" id="Vrenda" name="Vrenda" title="Somente Números"><br>
+          <label for="descricao">Descrição</label><br>
+          <input type="text" id="descricao" name="descricao"><br>
+          <label for="Rconta">Conta a ser depositada</label><br>
+        </form>
+      </div>
+    </div>
+    <button onclick="document.getElementById('id01').style.display='block'"
+class="w3-button">Open Modal</button>
+
+<!-- The Modal -->
+<div id="id01" class="w3-modal">
+  <div class="w3-modal-content">
+    <div class="w3-container">
+      <span onclick="document.getElementById('id01').style.display='none'"
+      class="w3-button w3-display-topright">&times;</span>
+      <p>Some text in the Modal..</p>
+      <p>Some text in the Modal..</p>
+    </div>
+  </div>
+</div>
+  </body>
+</html>

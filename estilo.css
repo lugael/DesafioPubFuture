@@ -1,0 +1,77 @@
+*{
+  padding: 0px;
+  margin: 0px;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+
+body{
+  font: 400 15px Lato, sans-serif;
+  line-height: 1.8;
+  color: #818181;
+}
+.jubortron{
+    background: #358093;
+    color: black;
+    text-align: center;
+    padding: 15px;
+}
+
+#menu{
+  list-style: none;
+
+}
+
+
+#men{
+  width: 50px;
+
+}
+
+input[type="checkbox"]{
+  display: none;
+}
+
+nav{
+  background-color: rgba(16,16,16,.5);
+  width: 350px;
+  height: 100%;
+  left: -350px;
+  position: absolute;
+  transition: all .5s;
+}
+
+input[type="checkbox"]:checked ~ nav {
+  transform: translateX(350px);
+}
+.container-fluid  {
+  padding: 100px 50px;
+  background: #ffffff;
+  text-align: center;
+}
+
+#menu{
+
+  top: 70px;
+  position: absolute;
+  width: 100%;
+}
+
+a{
+  display: block;
+  padding: 20px 5px;
+  color: white;
+}
+
+a:hover{
+  background-color: rgba(176, 224, 230);
+  color: black;
+}
+
+label{
+  padding: 15px;
+  position: absolute;
+  z-index: 1;
+}
