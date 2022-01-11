@@ -2,7 +2,10 @@
 <html lang="pt-br" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="estilo.css">
+    <link href="estilo.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <script src="script.js"></script>
     <title></title>
   </head>
   <body>
@@ -20,33 +23,30 @@
     </nav>
     <div   class="jubortron">
       <h1 id="renda">RENDAS</h1>
-      <div id="home" class="container-fluid">
-        <form>
-          <label for="Erenda">Tipo Renda</label><br>
-          <input type="text" id="Erenda" name="Erenda" placeholder="Sálario, invetimento, outros"><br>
-          <label for="dataR">Data do recebimento</label><br>
-          <input type="date" id="dataR" name="dataR"><br>
-          <label for"Vrenda">Valor da Renda</label><br>
-          <input type="number" id="Vrenda" name="Vrenda" title="Somente Números"><br>
-          <label for="descricao">Descrição</label><br>
-          <input type="text" id="descricao" name="descricao"><br>
-          <label for="Rconta">Conta a ser depositada</label><br>
-        </form>
+      <div>
+          <button id="adcRenda" onclick="iniciaModal('modal-adc')" class="adcRenda">Adiconar a renda</button>
+      </div>
+      <div id="modal-adc" class="modal-container">
+
+          <div class="modal">
+            <h3 id="titulomd" class="titulomd"> Adicione a Renda</h3>
+            <form>
+              <label for="Erenda">Tipo Renda</label><br>
+              <input type="text" id="Erenda" name="Erenda" placeholder="Sálario, invetimento, outros"><br>
+              <label for="dataR">Data do recebimento</label><br>
+              <input type="date" id="dataR" name="dataR"><br>
+              <label for"Vrenda">Valor da Renda</label><br>
+              <input type="number" id="Vrenda" name="Vrenda" title="Somente Números"><br>
+              <label for="descricao">Descrição</label><br>
+              <input type="text" id="descricao" name="descricao"><br>
+              <label for="Rconta">Conta a ser depositada</label><br>
+            </form>
+            <button class="fechar">FECHAR</button>
+          </div>
+        </div>
       </div>
     </div>
-    <button onclick="document.getElementById('id01').style.display='block'"
-class="w3-button">Open Modal</button>
 
-<!-- The Modal -->
-<div id="id01" class="w3-modal">
-  <div class="w3-modal-content">
-    <div class="w3-container">
-      <span onclick="document.getElementById('id01').style.display='none'"
-      class="w3-button w3-display-topright">&times;</span>
-      <p>Some text in the Modal..</p>
-      <p>Some text in the Modal..</p>
-    </div>
-  </div>
-</div>
+
   </body>
 </html>
