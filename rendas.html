@@ -10,7 +10,7 @@
   </head>
   <body>
     <input type="checkbox" id="chec">
-    <label for="chec">
+    <label for="chec" id="menui">
       <img id="men" src="menu.png" >
     </label>
     <nav>
@@ -23,29 +23,86 @@
     </nav>
     <div   class="jubortron">
       <h1 id="renda">RENDAS</h1>
-      <div>
-          <button id="adcRenda" onclick="iniciaModal('modal-adc')" class="adcRenda">Adiconar a renda</button>
-      </div>
+    </div>
+    <div>
+      <div class="container">
+        <div class="row" id="row">
+          <div>
+            <button id="adcRenda" onclick="iniciaModal('modal-adc')" class="adcRenda">Adiconar a renda</button>
+          </div>
+            <div>filtro</div>
+        </div>
+        <div id="Valores">
+          <div>Edita</div>
+          <div>Remove</div>
+          <div>Conta</div>
+          <div>Valor</div>
+          <div>Tipo</div>
+          <div>Descrição</div>
+          <div>DT recebimento</div>
+          <div>DT Esperado</div>
+        <!-- </div>
+        <div id="resultado"> -->
+          <div>Edite</div>
+          <div>Remove</div>
+          <div>001</div>
+          <div>20</div>
+          <div>cont</div>
+          <div>ab</div>
+          <div>16/01/01</div>
+          <div>2/01/1</div>
+        </div>
+    </div>
       <div id="modal-adc" class="modal-container">
 
           <div class="modal">
+
             <h3 id="titulomd" class="titulomd"> Adicione a Renda</h3>
-            <form>
-              <label for="Erenda">Tipo Renda</label><br>
-              <input type="text" id="Erenda" name="Erenda" placeholder="Sálario, invetimento, outros"><br>
-              <label for="dataR">Data do recebimento</label><br>
-              <input type="date" id="dataR" name="dataR"><br>
-              <label for"Vrenda">Valor da Renda</label><br>
-              <input type="number" id="Vrenda" name="Vrenda" title="Somente Números"><br>
-              <label for="descricao">Descrição</label><br>
-              <input type="text" id="descricao" name="descricao"><br>
-              <label for="Rconta">Conta a ser depositada</label><br>
+            <form id="AdcRenda">
+              <div id="modal-grid">
+                <table>
+                  <tr>
+                    <td id="formtd">
+                      <label for="Erenda" id="labeltd">Tipo Renda</label>
+                      <select id="Erenda" name="Erenda">
+                        <option value="salario">Salário </option>
+                        <option value="Investimento">Investimento</option>
+                        <option value="rendaextra">Renda Extra</option>
+                        <option value="outros">Outros</option>
+                      </select>
+                    </td>
+                    <td id="formtd">
+                      <label for="Rconta" id="labeltd">Conta a ser depositada</label>
+                      <input type="number" id="contadp" name="contadp" placeholder="0001">
+                    </td>
+                    <td id="formtd">
+                      <label for="dataR" id="labeltd">Data do recebimento</label>
+                      <input type="date" id="dataR" name="dataR">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="descricao" id="labeltd">Descrição</label>
+                      <input type="text" id="descricao" name="descricao">
+                    </td>
+                    <td>
+                      <label for"Vrenda" id="labeltd">Valor da Renda</label>
+                      <input type="number" id="Vrenda" name="Vrenda" title="Somente Números">
+                    </td>
+                    <td>
+                      <label for="dataR" id="labeltd">Data Esperada de recebimento</label>
+                      <input type="date" id="dataE" name="dataE">
+                    </td>
+                  </tr>
+                </table>
+              </div>
             </form>
             <button class="fechar">FECHAR</button>
-          </div>
+            <button type="button" class="salvar" id="salvar" onclick="salvarf()">SALVAR RENDA</button>
+
         </div>
       </div>
-    </div>
+
 
 
   </body>
