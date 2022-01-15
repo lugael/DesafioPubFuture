@@ -5,6 +5,7 @@
     <link href="estilo.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="script.js"></script>
     <title></title>
   </head>
@@ -24,47 +25,53 @@
     <div   class="jubortron">
       <h1 id="renda">RENDAS</h1>
     </div>
-    <div>
       <div class="container">
-        <div class="row" id="row">
-          <div>
+        <table class="row" id="row">
+          <tr>
             <button id="adcRenda" onclick="iniciaModal('modal-adc')" class="adcRenda">Adiconar a renda</button>
-          </div>
-            <div>filtro</div>
-        </div>
-        <div id="Valores">
-          <div>Edita</div>
-          <div>Remove</div>
-          <div>Conta</div>
-          <div>Valor</div>
-          <div>Tipo</div>
-          <div>Descrição</div>
-          <div>DT recebimento</div>
-          <div>DT Esperado</div>
-        <!-- </div>
-        <div id="resultado"> -->
-          <div>Edite</div>
-          <div>Remove</div>
-          <div>001</div>
-          <div>20</div>
-          <div>cont</div>
-          <div>ab</div>
-          <div>16/01/01</div>
-          <div>2/01/1</div>
-        </div>
+          </tr>
+          <tr>
+            <button id="filtroR" onclick="iniciaModal('modal-fil')" class="filtroR">Filtrar</button>
+          </tr>
+        </table>
+        <table id="Valores">
+          <tr>
+            <td id="cabecario">Edita</td>
+            <td id="cabecario">Remove</td>
+            <td id="cabecario">Conta</td>
+            <td id="cabecario">Valor</td>
+            <td id="cabecario">Tipo</td>
+            <td id="cabecario">Descrição</td>
+            <td id="cabecario">DT recebimento</td>
+            <td id="cabecario">DT Esperado</td>
+          </tr>
+          <tr>
+            <td id="colunas">Edite</td>
+            <td id="colunas">Remove</td>
+            <td id="colunas">001</td>
+            <td id="colunas">20</td>
+            <td id="colunas">cont</td>
+            <td id="colunas">ab</td>
+            <td id="colunas">16/01/01</td>
+            <td id="colunas">2/01/1</td>
+          </tr>
+
+
+
+        </table>
     </div>
       <div id="modal-adc" class="modal-container">
 
           <div class="modal">
 
             <h3 id="titulomd" class="titulomd"> Adicione a Renda</h3>
-            <form id="AdcRenda">
+            <form id="AdcRenda"  method="POST">
               <div id="modal-grid">
                 <table>
                   <tr>
                     <td id="formtd">
-                      <label for="Erenda" id="labeltd">Tipo Renda</label>
-                      <select id="Erenda" name="Erenda">
+                      <label for="tiporenda" id="labeltd">Tipo Renda</label>
+                      <select id="tiporenda" name="tiporenda">
                         <option value="salario">Salário </option>
                         <option value="Investimento">Investimento</option>
                         <option value="rendaextra">Renda Extra</option>
@@ -72,15 +79,60 @@
                       </select>
                     </td>
                     <td id="formtd">
-                      <label for="Rconta" id="labeltd">Conta a ser depositada</label>
-                      <input type="number" id="contadp" name="contadp" placeholder="0001">
+                      <label for="contaDepositada" id="labeltd">Conta a ser depositada</label>
+                      <input type="number" id="contaDepositada" name="contaDepositada" placeholder="0001">
                     </td>
                     <td id="formtd">
-                      <label for="dataR" id="labeltd">Data do recebimento</label>
-                      <input type="date" id="dataR" name="dataR">
+                      <label for="dataRecebimento" id="labeltd">Data do recebimento</label>
+                      <input type="date" id="dataRecebimento" name="dataRecebimento">
                     </td>
                   </tr>
                   <tr>
+                    <td>
+                      <label for="descricaoRenda" id="labeltd">Descrição</label>
+                      <input type="text" id="descricaoRenda" name="descricaoRenda">
+                    </td>
+                    <td>
+                      <label for"valorRenda" id="labeltd">Valor da Renda</label>
+                      <input type="number" id="valorRenda" name="valorRenda" title="Somente Números">
+                    </td>
+                    <td>
+                      <label for="dataEsperado" id="labeltd">Data Esperada de recebimento</label>
+                      <input type="date" id="dataEsperado" name="dataEsperado">
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </form>
+            <button class="fechar">FECHAR</button>
+            <button type="button" class="salvar" id="salvar" onclick="salvarf()">SALVAR RENDA</button>
+
+        </div>
+      </div>
+      <div id="modal-fil" class="modal-container">
+
+          <div class="modal">
+
+            <h3 id="titulomd" class="titulomd"> Filtar Renda</h3>
+            <form id="AdcRenda" onsubmit="return false;">
+              <div id="modal-grid">
+                <table>
+                  <tr>
+                    <td id="formtd">
+                      <label for="Frenda" id="labeltd">Tipo Renda</label>
+                      <select id="Frenda" name="Frenda">
+                        <option value="salario">Salário </option>
+                        <option value="Investimento">Investimento</option>
+                        <option value="rendaextra">Renda Extra</option>
+                        <option value="outros">Outros</option>
+                      </select>
+                    </td>
+                    <td id="formtd">
+                      <label for="dataF" id="labeltd">Data do recebimento</label>
+                      <input type="date" id="dataF" name="dataF">
+                    </td>
+                  </tr>
+                  <!-- <tr>
                     <td>
                       <label for="descricao" id="labeltd">Descrição</label>
                       <input type="text" id="descricao" name="descricao">
@@ -93,16 +145,15 @@
                       <label for="dataR" id="labeltd">Data Esperada de recebimento</label>
                       <input type="date" id="dataE" name="dataE">
                     </td>
-                  </tr>
+                  </tr> -->
                 </table>
               </div>
             </form>
             <button class="fechar">FECHAR</button>
-            <button type="button" class="salvar" id="salvar" onclick="salvarf()">SALVAR RENDA</button>
+            <button type="button" class="salvar" id="salvar" onclick="filtrorenda()">Filtrar</button>
 
         </div>
       </div>
-
 
 
   </body>
