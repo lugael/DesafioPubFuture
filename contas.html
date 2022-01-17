@@ -5,12 +5,13 @@
     <link href="estilo.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="conta.js"></script>
     <title></title>
   </head>
   <body>
     <input type="checkbox" id="chec">
-    <label for="chec">
+    <label for="chec" id="menui">
       <img id="men" src="menu.png" >
     </label>
     <nav>
@@ -21,6 +22,115 @@
         <li><a href="contas.html">Contas</a></li>
       </ul>
     </nav>
+    <div   class="jubortron">
+      <h1 id="renda">Conta</h1>
+    </div>
+      <div class="container">
+        <table class="row" id="row">
+          <tr>
+            <button id="adicionarconta" onclick="abre_modal('I', 'modal-adc')" class="botaoadicionar">Adiconar Conta</button>
+          </tr>
+          
+        </table>
+        <table id="Valores">
+          <thead>
+            <th id="cabecario">ID</th>
+            <th id="cabecario">Conta</th>
+            <th id="cabecario">Valor</th>
+            <th id="cabecario">Tipo</th>
+            <th id="cabecario">Instituição Financeira</th>
+            <th id="cabecario">Edita</th>
+            <th id="cabecario">Remove</th>
+          </thead>
+        <tbody id="conteudo_conta" class="colunas"></tbody>
+        </table>
+    </div>
+      <div id="modal-adc" class="modal-container">
+
+          <div class="modal">
+
+            <h3 id="titulomd" class="titulomd"> Adicione conta</h3>
+            <form id="adicionarconta"  method="POST">
+              <div id="modal-grid">
+                <table>
+                  <tr>
+                    <td id="formtd">
+                      <label for="tipo_de_conta" id="labeltd">Tipo de conta</label>
+                      <select id="tipo_de_conta" name="tipo_de_conta">
+                        <option value="corrente">Corrente </option>
+                        <option value="salario">Sálario</option>
+                        <option value="poupanca">Poupança</optio>
+                      </select>
+                    </td>
+                    <td id="formtd">
+                      <label for="valor_conta" id="labeltd">Valor</label>
+                      <input type="number" id="valor_conta" name="valor_conta" placeholder="0001">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="formtd">
+                        <label for="conta_nova" id="labeltd">Conta </label>
+                        <input type="number" id="conta_nova" name="conta_nova">
+                    </td>
+                    <td>
+                      <label for"inst_financeira" id="labeltd">Instituição Financeira</label>
+                      <input type="text" id="inst_financeira" name="inst_financeira" >
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </form>
+            <button class="fechar" onclick="fecha_modal('modal-adc')">FECHAR</button>
+            <button type="button" class="salvar" id="salvar" onclick="salvarf()">Salvar contas</button>
+
+        </div>
+      </div>
+
+      <div id="modal-edi" class="modal-container">
+
+          <div class="modal">
+            <h3 id="titulomd" class="titulomd"> Editar Renda</h3>
+            <form id="editrenda"  method="POST">
+              <div id="modal-grid">
+                <table>
+                  <tr>
+                    <td id="formtd">
+                      <label for="edi_tipo_de_conta" id="labeltd">Tipo de conta</label>
+                      <select id="edi_tipo_de_conta" name="edi_tipo_de_conta">
+                        <option value="corrente">Corrente </option>
+                        <option value="salario">Sálario</option>
+                        <option value="poupanca">Poupança</optio>
+                      </select>
+                    </td>
+                    <td id="formtd">
+                      <label for="edi_valor_conta" id="labeltd">Valor</label>
+                      <input type="number" id="edi_valor_conta" name="edi_valor_conta" placeholder="0001">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td id="formtd">
+                      <td>
+                        <label for="edi_conta_nova" id="labeltd">Conta </label>
+                        <input type="number" id="edi_conta_nova" name="edi_conta_nova">
+                      </td>
+                    </td>
+                    <td>
+                      <label for"edi_inst_financeira" id="labeltd">Instituição Financeira</label>
+                      <input type="text" id="edi_inst_financeira" name="edi_inst_financeira" >
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </form>
+            <button class="fechar" onclick="fecha_modal('modal-edi')">FECHAR</button>
+            <button type="button" class="salvar" id="salvar" onclick="salvaredicao()">CONCLUIDO</button>
+
+        </div>
+      </div>
+
+
 
   </body>
+  <input type="hidden" name="aux_op" id="aux_op" value="I">
+  <input type="hidden" name="id" id="id" >
 </html>

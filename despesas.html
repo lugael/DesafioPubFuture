@@ -5,12 +5,13 @@
     <link href="estilo.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="despesa.js"></script>
     <title></title>
   </head>
   <body>
     <input type="checkbox" id="chec">
-    <label for="chec">
+    <label for="chec" id="menui">
       <img id="men" src="menu.png" >
     </label>
     <nav>
@@ -21,6 +22,161 @@
         <li><a href="contas.html">Contas</a></li>
       </ul>
     </nav>
+    <div   class="jubortron">
+      <h1 id="renda">Despesas</h1>
+    </div>
+      <div class="container">
+        <table class="row" id="row">
+          <tr>
+            <button id="adicionardespesa" onclick="abre_modal('I', 'modal-adc')" class="botaoadicionar">Adiconar Despesa</button>
+          </tr>
+          <tr>
+            <button id="filtroD" onclick="abre_modal('F','modal-fil')" class="botaofiltrar">Filtrar</button>
+          </tr>
+        </table>
+        <table id="Valores">
+          <thead>
+            <th id="cabecario">ID</th>
+            <th id="cabecario">Conta</th>
+            <th id="cabecario">Valor</th>
+            <th id="cabecario">Tipo</th>
+            <th id="cabecario">Data de Pagamento</th>
+            <th id="cabecario">Data de Vencimento</th>
+            <th id="cabecario">Edita</th>
+            <th id="cabecario">Remove</th>
+          </thead>
+        <tbody id="conteudo_depesa" class="colunas"></tbody>
+        </table>
+    </div>
+      <div id="modal-adc" class="modal-container">
+
+          <div class="modal">
+
+            <h3 id="titulomd" class="titulomd"> Adicione Despesa</h3>
+            <form id="adicionarDespesa"  method="POST">
+              <div id="modal-grid">
+                <table>
+                  <tr>
+                    <td id="formtd">
+                      <label for="tipo_de_despesa" id="labeltd">Tipo de Despesa</label>
+                      <select id="tipo_de_despesa" name="tipo_de_despesa">
+                        <option value="casa">Casa </option>
+                        <option value="alimentacao">Alimentação</option>
+                        <option value="educacao">Educação</option>
+                        <option value="saude">Saúde</option>
+                        <option value="lazer">Lazer</option>
+                        <option value="transporte">Transporte</option>
+                        <option value="outros">Outros</option>
+                      </select>
+                    </td>
+                    <td id="formtd">
+                      <label for="valor_despesa" id="labeltd">Valor</label>
+                      <input type="number" id="valor_despesa" name="valor_despesa" placeholder="0001">
+                    </td>
+                    <td id="formtd">
+                      <label for="data_pagamento" id="labeltd">Data de Pagamento</label>
+                      <input type="date" id="data_pagamento" name="data_pagamento">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="conta_desconto" id="labeltd">Conta </label>
+                      <input type="number" id="conta_desconto" name="conta_desconto">
+                    </td>
+                    <td>
+                      <label for"data_vecimento" id="labeltd">Data de Vencimento</label>
+                      <input type="date" id="data_vecimento" name="data_vecimento" title="Somente Números">
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </form>
+            <button class="fechar" onclick="fecha_modal('modal-adc')">FECHAR</button>
+            <button type="button" class="salvar" id="salvar" onclick="salvarf()">Salvar Despesas</button>
+
+        </div>
+      </div>
+      <div id="modal-fil" class="modal-container">
+
+          <div class="modal">
+
+            <h3 id="titulomd" class="titulomd"> Filtar Renda</h3>
+            <form id="filtardespesa" onsubmit="return false;">
+              <div id="modal-grid">
+                <table>
+                  <tr>
+                    <td id="formtd">
+                      <label for="Frenda" id="labeltd">Tipo Renda</label>
+                      <select id="Frenda" name="Frenda">
+                        <option value="salario">Salário </option>
+                        <option value="Investimento">Investimento</option>
+                        <option value="rendaextra">Renda Extra</option>
+                        <option value="outros">Outros</option>
+                      </select>
+                    </td>
+                    <td id="formtd">
+                      <label for="dataF" id="labeltd">Data do recebimento</label>
+                      <input type="date" id="dataF" name="dataF">
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </form>
+            <button class="fechar">FECHAR</button>
+            <button type="button" class="salvar" id="salvar" onclick="filtrorenda()">Filtrar</button>
+
+        </div>
+      </div>
+      <div id="modal-edi" class="modal-container">
+
+          <div class="modal">
+            <h3 id="titulomd" class="titulomd"> Editar Renda</h3>
+            <form id="editrenda"  method="POST">
+              <div id="modal-grid">
+                <table>
+                  <tr>
+                    <td id="formtd">
+                      <label for="edi_tipo_de_despesa" id="labeltd">Tipo de Despesa</label>
+                      <select id="edi_tipo_de_despesa" name="edi_tipo_de_despesa">
+                        <option value="casa">Casa </option>
+                        <option value="alimentacao">Alimentação</option>
+                        <option value="educacao">Educação</option>
+                        <option value="saude">Saúde</option>
+                        <option value="lazer">Lazer</option>
+                        <option value="transporte">Transporte</option>
+                        <option value="outros">Outros</option>
+                    </td>
+                    <td id="formtd">
+                      <label for="edi_conta_desconto" id="labeltd">Conta</label>
+                      <input type="number" id="edi_conta_desconto" name="edi_conta_desconto" placeholder="0001">
+                    </td>
+                    <td id="formtd">
+                      <label for="edi_data_vecimento" id="labeltd">Data de Vencimento</label>
+                      <input type="date" id="edi_data_vecimento" name="edi_data_vecimento">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="edi_valor_despesa" id="labeltd">Valor da despesas</label>
+                      <input type="number" id="edi_valor_despesa" name="edi_valor_despesa" title="Somente Números">
+                    </td>
+                    <td>
+                      <label for="edi_data_pagamento" id="labeltd">Data de Pagamento</label>
+                      <input type="date" id="edi_data_pagamento" name="edi_data_pagamento">
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </form>
+            <button class="fechar" onclick="fecha_modal('modal-edi')">FECHAR</button>
+            <button type="button" class="salvar" id="salvar" onclick="salvaredicao()">CONCLUIDO</button>
+
+        </div>
+      </div>
+
+
 
   </body>
+  <input type="hidden" name="aux_op" id="aux_op" value="I">
+  <input type="hidden" name="id" id="id" >
 </html>

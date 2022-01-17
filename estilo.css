@@ -136,7 +136,7 @@ a:hover{
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3);
 }
 
-.adcRenda{
+.botaoadicionar{
   margin: 5px;
   width: 110px;
   height: 30px;
@@ -147,7 +147,7 @@ a:hover{
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.3);
 }
 
-.filtroR{
+.botaofiltrar{
   margin: 5px;
   width: 110px;
   height: 30px;
@@ -216,7 +216,7 @@ a:hover{
   font-family: "Lato";
 }
 
-#colunas {
+.colunas {
   /* background-color: black; */
   padding: 0px;
   border: 0.5px solid black;
